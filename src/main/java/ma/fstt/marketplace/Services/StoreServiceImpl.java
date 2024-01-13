@@ -36,6 +36,8 @@ public class StoreServiceImpl implements StoreService {
         storeRepository.deleteById(id);
     }
 
-
+    public List<Store> getAllStoresWithArticles() {
+        return storeRepository.findAllWithArticles();
+    }
 }
 

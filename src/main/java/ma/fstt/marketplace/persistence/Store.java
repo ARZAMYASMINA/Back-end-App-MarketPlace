@@ -1,9 +1,12 @@
 package ma.fstt.marketplace.persistence;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
 import lombok.*;
 
 import java.util.List;
+import java.util.Set;
 
 @Getter
 @Setter
@@ -12,6 +15,7 @@ import java.util.List;
 @NoArgsConstructor
 @Entity
 @Table(name = "store")
+@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
 public class Store {
 
     @Id
@@ -20,17 +24,19 @@ public class Store {
 
     private String nom;
 
-    @ManyToOne(fetch = FetchType.LAZY) // or FetchType.EAGER if needed
+    @JsonIgnore
+    @ManyToOne
     @JoinColumn(name = "idFournisseur")
     private Fournisseur fournisseur;
 
-    @ManyToMany(fetch = FetchType.LAZY) // or FetchType.EAGER if needed
+    @JsonIgnore
+    @ManyToMany
     @JoinTable(
             name = "vente",
             joinColumns = @JoinColumn(name = "idStore"),
             inverseJoinColumns = @JoinColumn(name = "idArticle")
     )
-    private List<Article> articles;
+    private Set<Article> articles;
 
 
 }

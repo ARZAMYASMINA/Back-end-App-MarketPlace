@@ -1,8 +1,10 @@
 package ma.fstt.marketplace.persistence;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.*;
 
 import java.util.List;
+import java.util.Set;
 
 @Getter
 @Setter
@@ -19,13 +21,16 @@ public class Article {
     private String libelle;
     private Double PU;
 
-    @ManyToMany(mappedBy = "articles",fetch = FetchType.LAZY)
-    private List<Store> stores;
+    @JsonIgnore
+    @ManyToMany(mappedBy = "articles")
+    private Set<Store> stores;
 
-    @ManyToMany(mappedBy = "articles",fetch = FetchType.LAZY)
+    @JsonIgnore
+    @ManyToMany(mappedBy = "articles")
     private List<Commande> commandes;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @JsonIgnore
+    @ManyToOne
     @JoinColumn(name = "idCat")
     private Categorie categorie;
 }

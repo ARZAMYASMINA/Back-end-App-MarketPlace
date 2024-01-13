@@ -13,5 +13,6 @@ public interface StoreService {
     Store saveStore(Store store);
 
     void deleteStore(Long id);
+    List<Store> getAllStoresWithArticles();
 
 }

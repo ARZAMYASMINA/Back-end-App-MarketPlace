@@ -63,26 +63,9 @@ public class StoreController {
             return ResponseEntity.notFound().build();
         }
     }
-    @GetMapping("/{id}/all")
-    public ResponseEntity<Fournisseur> getStoreFournisseur(@PathVariable Long id) {
-        Store store = storeService.getStoreById(id);
-        if (store != null) {
-            Fournisseur fournisseur = store.getFournisseur();
-            return ResponseEntity.ok(fournisseur);
-        } else {
-            return ResponseEntity.notFound().build();
-        }
-    }
-
-    @GetMapping("/{id}/articles")
-    public ResponseEntity<List<Article>> getStoreArticles(@PathVariable Long id) {
-        Store store = storeService.getStoreById(id);
-        if (store != null) {
-            List<Article> articles = store.getArticles();
-            return ResponseEntity.ok(articles);
-        } else {
-            return ResponseEntity.notFound().build();
-        }
+    @GetMapping("/all-with-articles")
+    public List<Store> getAllStoresWithArticles() {
+        return storeService.getAllStoresWithArticles();
     }
 }
 

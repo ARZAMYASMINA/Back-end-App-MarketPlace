@@ -18,7 +18,7 @@ public class Fournisseur {
 
     private String nom;
     private String adresse;
-
+    private String password;
 
 
 }

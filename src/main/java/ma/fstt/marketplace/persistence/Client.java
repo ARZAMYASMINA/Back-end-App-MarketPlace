@@ -21,7 +21,7 @@ public class Client {
 
     private String nom;
     private String adresse;
-
+    private String password;
 
 
     // Getters and setters

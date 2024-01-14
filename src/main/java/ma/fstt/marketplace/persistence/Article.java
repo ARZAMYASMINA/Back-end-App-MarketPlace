@@ -18,6 +18,8 @@ public class Article {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long idArticle;
 
+    private String description;
+    private String image;
     private String libelle;
     private Double PU;
 

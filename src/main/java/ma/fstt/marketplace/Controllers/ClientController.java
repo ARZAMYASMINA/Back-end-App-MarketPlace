@@ -5,6 +5,7 @@ import ma.fstt.marketplace.persistence.Client;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.http.HttpStatus;
 
 import java.util.List;
 
@@ -13,6 +14,7 @@ import java.util.List;
 public class ClientController {
 
     private final ClientService clientService;
+
 
     @Autowired
     public ClientController(ClientService clientService) {
@@ -61,5 +63,7 @@ public class ClientController {
             return ResponseEntity.notFound().build();
         }
     }
+
+    //authentication
 }
 

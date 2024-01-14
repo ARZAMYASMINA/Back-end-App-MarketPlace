@@ -24,6 +24,8 @@ public class Store {
 
     private String nom;
 
+    private String description;
+
     @JsonIgnore
     @ManyToOne
     @JoinColumn(name = "idFournisseur")
